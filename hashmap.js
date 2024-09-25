@@ -4,6 +4,7 @@ export default class HashMap {
       .fill(null)
       .map(() => []);
     this.loadFactor = loadFactor;
+    this.threshold = Math.floor(this.buckets.length * this.loadFactor);
     this.size = 0;
   }
 
@@ -113,7 +114,7 @@ export default class HashMap {
     this.buckets = Array(oldBuckets.length * 2)
       .fill(null)
       .map(() => []);
-    this.loadFactor = Math.floor(this.buckets.length * this.loadFactor);
+    this.threshold = Math.floor(this.buckets.length * this.loadFactor);
     this.size = 0;
 
     for (let bucket of oldBuckets) {
