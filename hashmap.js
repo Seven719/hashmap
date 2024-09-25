@@ -28,7 +28,7 @@ export default class HashMap {
     const index = this.hash(key);
     this.checkIndex(index);
 
-    for (let i = 0; i < this.buckets.length; i++) {
+    for (let i = 0; i < this.buckets[index].length; i++) {
       if (this.buckets[index][i][0] == key) {
         this.buckets[index][i][1] = value;
         return;
