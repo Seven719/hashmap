@@ -23,4 +23,19 @@ export default class HashMap {
 
     return hashCode;
   }
+
+  set(key, value) {
+    const index = this.hash(key);
+    this.checkIndex(index);
+
+    for (let i = 0; i < this.buckets.length; i++) {
+      if (this.buckets[index][i][0] == key) {
+        this.buckets[index][i][1] = value;
+        return;
+      }
+    }
+
+    this.buckets[index].push([key, value]);
+    this.size++;
+  }
 }
