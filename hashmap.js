@@ -101,4 +101,10 @@ export default class HashMap {
       bucket.map(([_key, value]) => value)
     );
   }
+
+  entries() {
+    return this.buckets.flatMap((bucket) =>
+      bucket.map(([key, value]) => [key, value])
+    );
+  }
 }
