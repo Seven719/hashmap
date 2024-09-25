@@ -1,0 +1,17 @@
+{
+  "name": "hashmap",
+  "version": "1.0.0",
+  "description": "hash-map",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "hash",
+    "map",
+    "hashmap"
+  ],
+  "author": "Iulian Nichifor",
+  "license": "MIT",
+  "type": "module"
+}
