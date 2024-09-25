@@ -91,4 +91,8 @@ export default class HashMap {
 
     this.size = 0;
   }
+
+  keys() {
+    return this.buckets.flatMap((bucket) => bucket.map(([key]) => key));
+  }
 }
