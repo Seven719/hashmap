@@ -107,4 +107,19 @@ export default class HashMap {
       bucket.map(([key, value]) => [key, value])
     );
   }
+
+  resize() {
+    const oldBuckets = this.buckets;
+    this.buckets = Array(oldBuckets.length * 2)
+      .fill(null)
+      .map(() => []);
+    this.loadFactor = Math.floor(this.buckets.length * this.loadFactor);
+    this.size = 0;
+
+    for (let bucket of oldBuckets) {
+      for (let [key, value] of bucket) {
+        this.set(key, value);
+      }
+    }
+  }
 }
