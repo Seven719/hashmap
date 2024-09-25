@@ -38,4 +38,16 @@ export default class HashMap {
     this.buckets[index].push([key, value]);
     this.size++;
   }
+
+  get(key) {
+    const index = this.hash(key);
+    this.checkIndex(index);
+    for (let [storedKey, value] of this.buckets[index]) {
+      if (storedKey == key) {
+        return value;
+      }
+    }
+
+    return null;
+  }
 }
