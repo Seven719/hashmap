@@ -7,7 +7,7 @@ export default class HashMap {
   }
 
   checkIndex(index) {
-    if (index < 0 || index >= buckets.length) {
+    if (index < 0 || index >= this.buckets.length) {
       throw new Error("Trying to access index out of bound");
     }
   }
