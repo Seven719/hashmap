@@ -4,6 +4,7 @@ export default class HashMap {
       .fill(null)
       .map(() => []);
     this.loadFactor = loadFactor;
+    this.size = 0;
   }
 
   checkIndex(index) {
@@ -49,5 +50,33 @@ export default class HashMap {
     }
 
     return null;
+  }
+
+  has(key) {
+    const index = this.hash(key);
+    this.checkIndex(index);
+    for (let [storedKey] of this.buckets[index]) {
+      if (storedKey == key) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  remove(key) {
+    const index = this.hash(key);
+    this.checkIndex(index);
+
+    const bucket = this.buckets[index];
+    for (let i = 0; i < bucket.length; i++) {
+      if (bucket[i][0] == key) {
+        bucket.splice(i, 1);
+        this.size--;
+        return true;
+      }
+    }
+
+    return false;
   }
 }
