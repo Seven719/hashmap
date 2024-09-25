@@ -39,6 +39,10 @@ export default class HashMap {
 
     this.buckets[index].push([key, value]);
     this.size++;
+
+    if (this.size >= this.threshold) {
+      this.resize();
+    }
   }
 
   get(key) {
